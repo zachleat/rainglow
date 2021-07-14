@@ -1,12 +1,12 @@
 [[redirects]]
-from = "/"
-to = "/3b5f3b/"
-status = 301
-force = true
-
-[[redirects]]
 from = "/:color/"
 to = "/.netlify/functions/serverless"
 status = 200
 force = true
 _generated_by_eleventy_serverless = "serverless"
+
+[[redirects]]
+from = "/"
+to = "/3b5f3b/"
+status = 301
+force = true
