@@ -16,9 +16,17 @@ module.exports = {
     return `${data.backgroundColor}`;
   },
   color: function(data) {
-    if(data.serverlessColor && data.serverlessColor.isDark()) {
-      return "white";
+    if(data.serverlessColor) {
+      let readability = this.textReadability(data.serverlessColor);
+      if(readability.white > readability.black) {
+        return "white";
+      }
+      return "black";
     }
-    return "black";
+  },
+  readabilityScore: function(data) {
+    if(data.serverlessColor) {
+      return this.textReadability(data.serverlessColor);
+    }
   }
 };

@@ -12,12 +12,11 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addFilter("textReadability", function(color) {
-    let colorObj = tinycolor(color);
-    if(colorObj.isDark()) {
-      return tinycolor.readability(color, "#fff").toFixed(2);
-    }
-    return tinycolor.readability(color, "#000").toFixed(2);
-  })
+    return {
+      white: tinycolor.readability(color, "#fff"),
+      black: tinycolor.readability(color, "#000")
+    };
+  });
 
   eleventyConfig.addFilter("tinycolor", (color) => tinycolor(color));
 
