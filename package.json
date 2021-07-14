@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx @11ty/eleventy --serve"
+    "start": "npx @11ty/eleventy --serve",
+    "build-production": "mkdir _site && npx @11ty/eleventy"
   },
   "keywords": [],
   "author": "",
