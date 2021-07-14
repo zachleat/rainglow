@@ -1,6 +1,6 @@
 # rainglow
 
-A demo site using [Eleventy Serverless](https://www.11ty.dev/docs/plugins/serverless/) built for 11tymeetup.dev.
+A demo site using [Eleventy Serverless](https://www.11ty.dev/docs/plugins/serverless/) built for [11tymeetup.dev](https://11tymeetup.dev/).
 
 * Live demos: [`rebeccapurple`](https://rainglow.netlify.app/rebeccapurple/), [@zachleat Green](https://rainglow.netlify.app/3b5f3b/)
 * Production build command: `npm run build-production`
