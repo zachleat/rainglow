@@ -1,0 +1,16 @@
+{
+  "name": "demo-11ty-meetup-serverless",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx @11ty/eleventy --serve"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@11ty/eleventy": "1.0.0-canary.39",
+    "tinycolor2": "^1.4.2"
+  }
+}
