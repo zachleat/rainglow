@@ -7,6 +7,8 @@ module.exports = function(eleventyConfig) {
     functionsDir: "./netlify/functions/",
   });
 
+  eleventyConfig.ignores.add("README.md");
+
   eleventyConfig.addShortcode("randomColor", () => {
     return tinycolor.random().toHexString().substr(1);
   });

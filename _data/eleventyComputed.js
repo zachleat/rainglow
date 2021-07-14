@@ -13,7 +13,7 @@ module.exports = {
       let gradient = `linear-gradient(${data.serverlessColor}, ${data.serverlessColor}, ${data.serverlessColor.clone().darken(30)})`;
       return `${gradient} ${data.backgroundColor}`;
     }
-    return `${data.backgroundColor}`;
+    return data.backgroundColor;
   },
   color: function(data) {
     if(data.serverlessColor) {
