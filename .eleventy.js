@@ -9,18 +9,9 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.ignores.add("README.md");
 
-  eleventyConfig.addShortcode("randomColor", () => {
-    return tinycolor.random().toHexString().substr(1);
-  });
-
-  eleventyConfig.addFilter("textReadability", function(color) {
-    return {
-      white: tinycolor.readability(color, "#fff"),
-      black: tinycolor.readability(color, "#000")
-    };
-  });
-
   eleventyConfig.addFilter("tinycolor", (color) => tinycolor(color));
+  eleventyConfig.addFilter("contrast", (color, textColor) => tinycolor.readability(color, textColor));
+  eleventyConfig.addShortcode("randomColor", () => tinycolor.random().toHexString().substr(1));
 
   return {
     markdownTemplateEngine: "njk"

@@ -2,6 +2,9 @@
 layout: "layout.njk"
 permalink:
   serverless: "/:color/"
+comparisonColors:
+  - "#fff"
+  - "#000"
 ---
 # rainglow `{{ serverlessColor }}`
 
@@ -12,12 +15,12 @@ permalink:
 {{ serverlessColor.toName() }}
 {% endif %}
 
-* Contrast with white: {{ readabilityScore.white | round(3) }}
-  * {% if readabilityScore.white > 4.5 %}✅{% else %}🚫{% endif %} WCAG 2.0 AA
-  * {% if readabilityScore.white > 7 %}✅{% else %}🚫{% endif %} WCAG 2.0 AAA
-* Contrast with black: {{ readabilityScore.black | round(3) }}
-  * {% if readabilityScore.black > 4.5 %}✅{% else %}🚫{% endif %} WCAG 2.0 AA
-  * {% if readabilityScore.black > 7 %}✅{% else %}🚫{% endif %} WCAG 2.0 AAA
+{%- for comparison in comparisonColors %}
+{%- set ratio = serverlessColor | contrast(comparison) %}
+* <span style="color: {{ comparison }}">Contrast with {{ comparison }}: {{ ratio | round(3) }}</span>
+  * {% if ratio > 4.5 %}✅{% else %}🚫{% endif %} WCAG 2.0 AA
+  * {% if ratio > 7 %}✅{% else %}🚫{% endif %} WCAG 2.0 AAA
+{%- endfor %}
 * Go to [random color](/{% randomColor %}/)
 {# * Built with Eleventy Serverless:
   * `page.date`: {{ page.date }}

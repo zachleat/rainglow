@@ -17,16 +17,12 @@ module.exports = {
   },
   color: function(data) {
     if(data.serverlessColor) {
-      let readability = this.textReadability(data.serverlessColor);
-      if(readability.white > readability.black) {
+      let readabilityWhite = this.contrast(data.serverlessColor, "#fff");
+      let readabilityBlack = this.contrast(data.serverlessColor, "#000");
+      if(readabilityWhite > readabilityBlack) {
         return "white";
       }
       return "black";
-    }
-  },
-  readabilityScore: function(data) {
-    if(data.serverlessColor) {
-      return this.textReadability(data.serverlessColor);
     }
   }
 };
