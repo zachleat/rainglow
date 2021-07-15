@@ -30,3 +30,5 @@ comparisonColors:
 ```
 {{ eleventy.serverless | dump(2) | safe }}
 ```
+
+Built with [Eleventy Serverless](https://www.11ty.dev/docs/plugins/serverless/). [Source code available on GitHub.](https://github.com/zachleat/rainglow)
