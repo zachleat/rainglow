@@ -2,7 +2,7 @@
 
 A demo site using [Eleventy Serverless](https://www.11ty.dev/docs/plugins/serverless/) built for [11tymeetup.dev](https://11tymeetup.dev/).
 
-* Live demos: [`rebeccapurple`](https://rainglow.netlify.app/rebeccapurple/), [@zachleat Green](https://rainglow.netlify.app/3b5f3b/)
+* Live demos: [`rebeccapurple`](https://rainglow.zachleat.dev/rebeccapurple/), [@zachleat Green](https://rainglow.zachleat.dev/3b5f3b/)
 * Production build command: `npm run build-production`
 * Development build command: `npm start`
 * On Netlify it requires the Environment variable `AWS_LAMBDA_JS_RUNTIME` set to `nodejs14.x`
