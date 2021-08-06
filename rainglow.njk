@@ -6,9 +6,9 @@ comparisonColors:
   - "#fff"
   - "#000"
 ---
-<code>{{ serverlessColor }}</code><br>
 <code>{{ serverlessColor.toHslString() }}</code><br>
-<code>{{ serverlessColor.toRgbString() }}</code>
+<code>{{ serverlessColor.toRgbString() }}</code><br>
+<code>{{ serverlessColor }}</code><br>
 
 {% if serverlessColor and serverlessColor.toName() %}
 {{ serverlessColor.toName() }}
@@ -18,10 +18,10 @@ comparisonColors:
 {%- for comparison in comparisonColors %}
 {%- set ratio = serverlessColor | contrast(comparison) %}
   <div style="color: {{ comparison }}">
-    <span>Contrast with {{ comparison }}: {{ ratio | round(3) }}</span>
+    <span>Contrast with {{ comparison }}: <code>{{ ratio | round(3) }}</code></span>
     <ul>
-      <li>{% if ratio > 4.5 %}✅{% else %}🚫{% endif %} WCAG 2.0 AA</li>
-      <li>{% if ratio > 7 %}✅{% else %}🚫{% endif %} WCAG 2.0 AAA</li>
+      <li>{% if ratio > 4.5 %}<span class="compat yes">Yes</span>{% else %}<span class="compat no">No</span>{% endif %} WCAG 2.0 AA</li>
+      <li>{% if ratio > 7 %}<span class="compat yes">Yes</span>{% else %}<span class="compat no">No</span>{% endif %} WCAG 2.0 AAA</li>
     </ul>
   </div>
 {%- endfor %}

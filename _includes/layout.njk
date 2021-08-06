@@ -85,6 +85,25 @@
 		.contrast li {
 			list-style: none;
 		}
+
+		.compat {
+			text-transform: uppercase;
+			font-weight: 800;
+			font-size: 0.75em; /* 12px /16 */
+			font-family: -apple-system, system-ui, sans-serif;
+		}
+		.compat.yes {
+			color: #00d000;
+		}
+		.compat.yes:after {
+			content: " ✔ ";
+		}
+		.compat.no {
+			color: #f20000;
+		}
+		.compat.no:after {
+			content: " ❌ ";
+		}
 		</style>
 	</head>
 	<body>
