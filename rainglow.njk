@@ -1,0 +1,27 @@
+---
+layout: "layout.njk"
+permalink:
+  serverless: "/:color/"
+comparisonColors:
+  - "#fff"
+  - "#000"
+---
+<code>{{ serverlessColor.toHslString() }}</code><br>
+<code>{{ serverlessColor.toRgbString() }}</code>
+
+{% if serverlessColor and serverlessColor.toName() %}
+{{ serverlessColor.toName() }}
+{% endif %}
+
+<div class="contrast">
+{%- for comparison in comparisonColors %}
+{%- set ratio = serverlessColor | contrast(comparison) %}
+  <div style="color: {{ comparison }}">
+    <span>Contrast with {{ comparison }}: {{ ratio | round(3) }}</span>
+    <ul>
+      <li>{% if ratio > 4.5 %}✅{% else %}🚫{% endif %} WCAG 2.0 AA</li>
+      <li>{% if ratio > 7 %}✅{% else %}🚫{% endif %} WCAG 2.0 AAA</li>
+    </ul>
+  </div>
+{%- endfor %}
+</div>

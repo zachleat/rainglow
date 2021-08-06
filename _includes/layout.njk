@@ -6,6 +6,33 @@
 		<meta name="description" content="">
 		<title>Rainglow, a demo of Eleventy Serverless</title>
 		<meta name="theme-color" content="{{ backgroundColor }}">
+
+		{%- set productionPath = page.url | serverlessUrl(eleventy.serverless.path) %}
+		{%- set productionUrl = "https://rainglow.zachleat.dev" + productionPath %}
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="{{ productionUrl }}">
+		<meta property="og:site_name" content="Rainglow">
+		<meta property="og:locale" content="en_US">
+		<meta property="og:title" content="{{ serverlessColor }} on Rainglow">
+		<meta property="og:description" content="Rainglow is a web site for colors.">
+		<meta property="og:image" content="https://v1.screenshot.11ty.dev/{{ productionUrl | urlencode }}/opengraph/">
+		<meta property="og:image:width" content="1280">
+		<meta property="og:image:height" content="640">
+		<meta property="og:image:alt" content="Showing {{ serverlessColor }}, which is also {{ serverlessColor.toHslString() }} and {{ serverlessColor.toRgbString() }}">
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image">
+		<meta property="twitter:site" content="@eleven_ty">
+		<meta property="twitter:creator" content="@zachleat">
+		<meta property="twitter:url" content="{{ productionUrl }}">
+		<meta property="twitter:title" content="{{ serverlessColor }} on Rainglow">
+		<meta property="twitter:description" content="Rainglow is a web site for colors.">
+		<meta property="twitter:image" content="https://v1.screenshot.11ty.dev/{{ productionUrl | urlencode }}/opengraph/">
+		<meta property="twitter:image:alt" content="Showing {{ serverlessColor }}, which is also {{ serverlessColor.toHslString() }} and {{ serverlessColor.toRgbString() }}">
+		
+
 		<style>
 		body {
 			background: {{ background }};
@@ -17,12 +44,18 @@
 			box-sizing: border-box;
 			margin: 0;
 			padding: 0 1em;
-			font-family: Comic Sans MS, Chalkboard, system-ui, sans-serif;
+			font-family: Comic Sans MS, Chalkboard, Chalkboard SE Regular, system-ui, sans-serif;
+			min-height: 100vh;
+		}
+		header,
+		main {
 			font-size: 1em;
 			font-size: clamp(1em, 4vw, 2em);
 			text-align: center;
-			min-height: 100vh;
-			border: 3vw solid;
+		}
+		footer {
+			font-size: 1.5em;
+			margin-top: 4em;
 		}
 		:link,
 		:visited {
@@ -36,9 +69,32 @@
 		pre {
 			text-align: left;
 		}
+		.contrast {
+			display: flex;
+			flex-wrap: wrap;
+			margin: 4em 0;
+		}
+		.contrast > * {
+			min-width: 50%;
+			flex-basis: 15em;
+		}
+		.contrast li {
+			list-style: none;
+		}
 		</style>
 	</head>
 	<body>
-		{{ content | safe }}
+		<header>
+			<h1>rainglow <code>{{ serverlessColor }}</code></h1>
+		</header>
+
+		<main>
+			{{ content | safe }}
+		</main>
+
+		<footer>
+			<p><a href="/{% randomColor %}/">Random color</a>. Built with <a href="https://www.11ty.dev/docs/plugins/serverless/">Eleventy Serverless</a>. <a href="https://github.com/zachleat/rainglow">Source code on GitHub</a>.</p>
+			<pre><code>{{ eleventy.serverless | dump(2) | safe }}</code></pre>
+		</footer>
 	</body>
 </html>
