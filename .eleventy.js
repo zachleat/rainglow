@@ -5,6 +5,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(EleventyServerlessBundlerPlugin, {
     name: "serverless",
     functionsDir: "./netlify/functions/",
+    redirects: "netlify-toml-builders",
   });
 
   eleventyConfig.ignores.add("README.md");
